@@ -1,0 +1,76 @@
+body {
+    background-color: black;
+    box-sizing: border-box;
+}
+
+header {
+    height: 130px;
+    background-color: moccasin;
+}
+
+.col-lg-6 {
+    background-color: rgb(185, 236, 185);
+    height: 480px;
+}
+
+/* 사이트 대문 */
+#bakerStreet {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 게임(야바위) 영역 */
+
+#monteBox {
+    margin-top: 10px;
+    position: relative;
+    width: 400px;
+}
+
+canvas {
+    border: 1px solid dimgray;
+    background-color: lightgray;
+}
+
+#message {
+    padding: 10px 0;
+    border: 1px solid dimgray;
+    background-color: #303030;
+    color: white;
+    text-align: center;
+}
+
+
+/* 게임용 버튼 */
+
+#letsPlay {
+    position: absolute;
+    z-index: 10;
+    top: 320px;
+    left: 162px;
+    padding: 10px 20px;
+    background-color: white;
+}
+
+.chooseMe {
+    position: absolute;
+    z-index: 100;
+    top: 270px;
+    padding: 10px 20px;
+    background-color: white;
+    visibility: hidden;
+}
+
+#choose1 {
+    left: 73px;
+}
+
+#choose2 {
+    left: 173px;
+}
+
+#choose3 {
+    left: 273px;
+}

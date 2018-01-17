@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="entrance.css">
+    <script src="monte.js"></script>
+    <title>Baker Street 221B</title>
+</head>
+
+<body onload="gameReady()">
+    <header class="container">
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="center-block" id="monteBox">
+                    <div id="locationOfCanvas"></div>
+                    <p id="message">'시작' 버튼을 눌러주세요.</p>
+                    <span id="letsPlay" onclick="gameStart()">시작</span>
+                    <span class="chooseMe" id="choose1" onclick="choose1()">1</span>
+                    <span class="chooseMe" id="choose2" onclick="choose2()">2</span>
+                    <span class="chooseMe" id="choose3" onclick="choose3()">3</span>
+                    <button onclick="clearScore()">점수지우기</button>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="center-block" id="bakerStreet">
+                    <section>
+                        <p title="(출처)">환영합니다.</p>
+                        <p><a href="index.html">사이트 입장</a></p>
+                            <br>오른쪽 목록
+                            <br>1. 이미지 + 대문 링크를 테이블로 감쌈
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

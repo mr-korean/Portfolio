@@ -1,0 +1,106 @@
+/* 기본 */
+
+body {
+    width: 1280px;
+    height: 1024px;
+    background-image: url("Holmes.jpg");
+    box-sizing: border-box;
+    margin: auto;
+}
+
+header,
+section,
+footer,
+address {
+    width: 100%;
+}
+
+
+/* 페이지 최상단 배너 */
+
+header {
+    height: 180px;
+    background-color: tan;
+}
+
+header img {
+    width: 200px;
+    height: 100px;
+    margin-left: 200px;
+    margin-top: 25px;
+}
+
+header q {
+    text-align: center;
+    margin-top: 25px;
+    margin-left: 150px;
+    padding: 15px;
+    font-size: 1.2em;
+}
+
+header .menu {
+    padding: 0px 250px;
+}
+
+
+/* 각 페이지 최상단 제목 */
+
+.pagetitle {
+    background-color: wheat;
+    text-align: center;
+    border: 3px dashed sienna;
+    outline: 3px dashed burlywood;
+    display: inline-block;
+}
+
+
+/* 사이트 메뉴 속성 */
+
+nav {
+    width: 900px;
+}
+
+nav ul {
+    padding-left: 0px;
+}
+
+nav ul li {
+    float: left;
+    list-style-type: none;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    padding: 3px 20px 3px 20px;
+    border: 1px solid brown;
+}
+
+footer {
+    margin-top: 10px;
+    background-color: white;
+    border-style: dashed;
+    text-align: center;
+}
+
+address {
+    margin-top: 10px;
+    background-color: pink;
+    border-style: dashed;
+    text-align: right;
+    font-style: italic;
+    color: red;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clearfix::before, .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
