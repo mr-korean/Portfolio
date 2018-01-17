@@ -1,42 +1,63 @@
 var random1, random2, position1, position2, position3, save1, save2, numbers, cupsChanged, shuffleCount, makeInterval, hiddenAnswer,
-    finalAnswer, youMissed;
-var currentScore = 0;
+    finalAnswer, youMissed, parsedData, gameData;
 var rotationLimit = 1; // 섞기 돌리는 횟수
 var cups = ["A", "B", "C"];
+gameData = {'level' : 1, 'score' : 0};
 
-function scoreCheck() {
-    if(typeof(Storage) !== "undefined") {
-        if (localStorage.monteScore) {
-            localStorage.monteScore = Number(localStorage.monteScore)}
-            else {
-                localStorage.monteScore = 0;
-            }
-            currentScore = localStorage.monteScore;
-    } else {
-        document.getElementById("message").innerHTML += "<br>주의 : 이 브라우저에서는 점수가 저장되지 않습니다.";
+function saveCheck() {
+    // 브라우저 별로 로컬 저장이 되는지 확인하는 함수.
+    if(typeof(Storage) !== "undefined")
+    {
+        loadScore();
+    }
+    else {
+        window.alert("주의 : 이 브라우저에서는 점수가 저장되지 않습니다!");
+        gameData.score = 0;
     }
 }
 
-function clearScore() {
-    localStorage.removeItem("monteScore");
-    scoreCheck();
-    score.respawn();
+function loadScore() {
+    parsedData = JSON.parse(localStorage.getItem("monteScore"));
+    if (parsedData === undefined)
+    {
+        console.log("로컬에 저장된 데이터가 없습니다.");
+        gameData.score = 0;
+    }
+    else
+    {
+        gameData.score = parsedData.score;
+        console.log(gameData);
+    }
 }
+
+function saveScore() {
+    console.log(gameData);
+    localStorage.setItem("monteScore", JSON.stringify(gameData));
+}
+
+function clearScore() {
+    if (window.confirm("현재 점수를 초기화하시겠습니까?<br>로컬에 저장된 데이터도 초기화됩니다!"))
+    {
+        gameData.score = 0;
+        updateScreen();
+        score.respawn();
+        localStorage.setItem("monteScore", JSON.stringify(gameData));
+        console.log(gameData);
+    }
+};
 
 // (※) 화면 새로고침. 움직이는 효과는 전부 여기에 있다.
 // "지우기- 조건확인 - 좌표이동 - 그리기"의 무한반복이다.
 function updateScreen() {
-    scoreCheck();
     screen.wipeScreen();
     cupA.respawn();
     cupB.respawn();
     cupC.respawn();
-    score.text = "점수: " + currentScore;
+    score.text = "점수: " + gameData.score;
     score.respawn();
 };
 
 function moveCups() {
-    scoreCheck();
     screen.wipeScreen();
     cupA.moveThis();
     cupB.moveThis();
@@ -47,7 +68,7 @@ function moveCups() {
     cupA.respawn();
     cupB.respawn();
     cupC.respawn();
-    score.text = "점수: " + currentScore;
+    score.text = "점수: " + gameData.score;
     score.respawn();
 };
 
@@ -61,8 +82,8 @@ function gameReady() {
     cupA.respawn();
     cupB.respawn();
     cupC.respawn();
-    scoreCheck();
-    score.text = "점수: " + currentScore;
+    saveCheck();
+    score.text = "점수: " + gameData.score;
     score.respawn();
 };
 
@@ -281,43 +302,43 @@ function answerMeNow() {
 function choose1() {
     // (중요) 틀렸을 경우, 답을 finalAnswer가 아니라 이게 cups 배열에서 몇 번째인지 숫자로 알려주도록 한다.
     if (cups[0] == finalAnswer) {
-        document.getElementById("message").innerHTML = "정답입니다! 축하합니다!"
-        currentScore += 1;
-        gameReset();
+        youCorrect();
     } else {
-        document.getElementById("message").innerHTML = "땡! 틀렸습니다... 정답은 " + youMissed + "번입니다.";
-        currentScore -= 1;
-        gameReset();
+        youWrong();
     };
+        gameReset();
 };
 
 function choose2() {
     if (cups[1] == finalAnswer) {
-        document.getElementById("message").innerHTML = "정답입니다! 축하합니다!"
-        currentScore += 1;
-        gameReset();
+        youCorrect();
     } else {
-        document.getElementById("message").innerHTML = "땡! 틀렸습니다... 정답은 " + youMissed + "번입니다.";
-        currentScore -= 1;
-        gameReset();
+        youWrong();
     };
+        gameReset();
 };
 
 function choose3() {
     if (cups[2] == finalAnswer) {
-        document.getElementById("message").innerHTML = "정답입니다! 축하합니다!"
-        currentScore += 1;
-        localStorage.monteScore = currentScore;
-        gameReset();
+        youCorrect();
     } else {
-        document.getElementById("message").innerHTML = "땡! 틀렸습니다... 정답은 " + youMissed + "번입니다.";
-        currentScore -= 1;
-        localStorage.monteScore = currentScore;
-        gameReset();
+        youWrong();
     };
+        gameReset();
 };
 
+function youCorrect() {
+    document.getElementById("message").innerHTML = "정답입니다! 축하합니다!"
+    gameData.score += 1;
+}
+
+function youWrong() {
+    document.getElementById("message").innerHTML = "땡! 틀렸습니다... 정답은 " + youMissed + "번입니다.";
+    gameData.score -= 1;
+}
+
 function gameReset() {
+    saveScore();
     document.getElementById("letsPlay").style.visibility = "visible";
     document.getElementById("choose1").style.visibility = "hidden";
     document.getElementById("choose2").style.visibility = "hidden";

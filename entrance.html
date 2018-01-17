@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="entrance.css">
     <script src="monte.js"></script>
+
     <title>Baker Street 221B</title>
 </head>
 
@@ -26,21 +27,47 @@
                     <span class="chooseMe" id="choose1" onclick="choose1()">1</span>
                     <span class="chooseMe" id="choose2" onclick="choose2()">2</span>
                     <span class="chooseMe" id="choose3" onclick="choose3()">3</span>
-                    <button onclick="clearScore()">점수지우기</button>
+                    <span id="clearScore" onclick="clearScore()">점수지우기</span>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="center-block" id="bakerStreet">
                     <section>
-                        <p title="(출처)">환영합니다.</p>
-                        <p><a href="index.html">사이트 입장</a></p>
-                            <br>오른쪽 목록
-                            <br>1. 이미지 + 대문 링크를 테이블로 감쌈
+
+                        <table id="gate-table" class="clearfix">
+                            <tr>
+                                <td>
+                                    <img src="https://pbs.twimg.com/media/DS2Cl2SWsAElMqi.jpg" style="width: 250px; height: 350px;">
+                                    <br>
+                                    <p style="text-align: center;font-style: italic;">시드니 패짓(Sidney Paget) 作,
+                                        <br>미발표 작품
+                                        <sup>
+                                            <a href="#s-1" id="rfn-1">[1]</a>
+                                        </sup>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; ">
+                                    <span id="gate-title">
+                                        <a href="index.html">환영합니다.</a>
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
                     </section>
                 </div>
             </div>
         </div>
     </div>
+    <footer class="container">
+        <p>
+            <a href="#rfn-1">[1]</a> 홈즈 시리즈에 사용되지 않은 홈즈의 초상화 3점 중 하나. 1998년 소더비 경매에서 판매되었다. 현 소장 및 촬영 : Dr. Constantine Rossakis. (
+            <a href="http://www.bestofsherlock.com/sidney-paget-original-art.htm">출처</a>)</p>
+    </footer>
+    <address class="container">
+        페이지 제작자: 이홍기
+    </address>
 </body>
 
 </html>

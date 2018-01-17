@@ -16,9 +16,21 @@ header {
 /* 사이트 대문 */
 #bakerStreet {
     height: 100%;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#gate-table {
+    float: right;
+    background-color: khaki;
+    border: 3px solid brown;
+    margin: 10px;
+}
+
+#gate-table td {
+    padding: 5px;
 }
 
 /* 게임(야바위) 영역 */
@@ -54,6 +66,15 @@ canvas {
     background-color: white;
 }
 
+#clearScore {
+    position: absolute;
+    z-index: 10;
+    left: 1px;
+    bottom: 48px;
+    padding: 10px 20px;
+    background-color: white;
+}
+
 .chooseMe {
     position: absolute;
     z-index: 100;
@@ -73,4 +94,19 @@ canvas {
 
 #choose3 {
     left: 273px;
+}
+
+footer {
+    margin-top: 10px;
+    background-color: white;
+    border-style: dashed;
+}
+
+address {
+    margin-top: 10px;
+    background-color: pink;
+    border-style: dashed;
+    text-align: right;
+    font-style: italic;
+    color: red;
 }
