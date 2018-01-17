@@ -18,7 +18,7 @@ function saveCheck() {
 
 function loadScore() {
     parsedData = JSON.parse(localStorage.getItem("monteScore"));
-    if (parsedData === undefined)
+    if (parsedData === null)
     {
         console.log("로컬에 저장된 데이터가 없습니다.");
         gameData.score = 0;
@@ -36,7 +36,7 @@ function saveScore() {
 }
 
 function clearScore() {
-    if (window.confirm("현재 점수를 초기화하시겠습니까?<br>로컬에 저장된 데이터도 초기화됩니다!"))
+    if (window.confirm("현재 점수를 초기화하시겠습니까?\n로컬에 저장된 데이터도 초기화됩니다!"))
     {
         gameData.score = 0;
         updateScreen();
@@ -79,10 +79,10 @@ function gameReady() {
     cupA = new component(50, 50, "dimgray", 70, 180);
     cupB = new component(50, 50, "dimgray", 170, 180);
     cupC = new component(50, 50, "dimgray", 270, 180);
+    saveCheck();
     cupA.respawn();
     cupB.respawn();
     cupC.respawn();
-    saveCheck();
     score.text = "점수: " + gameData.score;
     score.respawn();
 };

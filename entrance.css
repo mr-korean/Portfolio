@@ -9,7 +9,6 @@ header {
 }
 
 .col-lg-6 {
-    background-color: rgb(185, 236, 185);
     height: 480px;
 }
 
@@ -31,6 +30,11 @@ header {
 
 #gate-table td {
     padding: 5px;
+}
+
+#gate-title a {
+    color: red;
+    font-size: 2em;
 }
 
 /* 게임(야바위) 영역 */
